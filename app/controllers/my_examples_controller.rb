@@ -5,19 +5,16 @@ class MyExamplesController < ApplicationController
 
   def fortune_teller
     # Feature 1: The page should return a random fortune. Every time you refresh the page, you’ll get a new fortune. You should make up at least 3 different fortunes.
-    fortune = ""
+    fortunes = ["You will win the lottery this year", "You will receive a promotion this year", "You will meet the love of your life this year"]
     rand_num = rand(0..2)
-    fortune = "You will win the lottery this year" if rand_num == 0
-    fortune = "You will receive a promotion this year" if rand_num == 1
-    fortune = "You will meet the love of your life this year" if rand_num == 2
 
-    render json: {message: "Fortune: #{fortune}" }
+    render json: {message: "Fortune: #{fortunes[rand_num]}" }
   end
 
   def random_numbers
     # Feature 2: The page should return 6 randomly generated numbers between 1 and 60 so as to predict the upcoming lotto numbers.
     nums = []
-    (1..6).each { 
+    6.times { 
       nums << rand(1..60)
     }
 
